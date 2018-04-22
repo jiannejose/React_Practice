@@ -21,7 +21,7 @@ import React from 'react';
 // }
 
 
-//Stateless Functional Components -- components that use plain JS
+//Stateless Functional Components -- components that use plain JS, only has render function
 
 const Header = (props) => (
   <header className="top">
@@ -37,6 +37,6 @@ const Header = (props) => (
       <span>{props.tagline}</span>
     </h3>
 </header>
-)
+);
 
 export default Header;
