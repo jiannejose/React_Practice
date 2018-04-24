@@ -2,21 +2,21 @@ import React from 'react';
 import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
+  // other way of defining 'this' in goToStore() or any made up/custom method:
   // constructor() {
   //   super();
   //   this.goToStore = this.goToStore.bind(this);
-  // }
+  // } 
 
   myInput = React.createRef();
 
   goToStore = (e) => {
+    console.log(this);
     // 1. Stop the form from submitting
     e.preventDefault();
-
     // 2. Get the text from that input
     const storeName = this.myInput.value.value;
-
-    // 3. Change the page to /store/:storeId(whatever they entered)
+    // 3. Change the page to /store/:storeId(whatever they entered) without refreshing the page
     this.props.history.push(`/store/${storeName}`);
   }
 
@@ -27,10 +27,10 @@ class StorePicker extends React.Component {
 
         <input 
           type="text"
-          ref={this.myInput}
           required
           placeholder="Store Name"
-          defaultValue={getFunName()}
+          defaultValue={getFunName()} // from helper.js
+          ref={this.myInput} // used to reference input without touching the DOM or using querySelector 
           />
 
         <button type="submit">Visit Store → </button>
