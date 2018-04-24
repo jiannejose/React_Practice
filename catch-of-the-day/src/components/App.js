@@ -4,6 +4,22 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends React.Component {
+
+  state = {
+    fishes: {},
+    orders: {}
+  };
+
+  addFish = (fish) => {
+    const fishesList = {...this.state.fishes};
+
+    fishesList[`fish${Date.now()}`] = fish;
+
+    this.setState({
+       fishes: fishesList,
+    });
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -13,7 +29,7 @@ class App extends React.Component {
 
         <Order />
 
-        <Inventory />
+        <Inventory addFish={this.addFish} />
       </div>
     )
   }
