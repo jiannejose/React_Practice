@@ -4,6 +4,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 import fishes from '../sample-fishes'; //fishes is a made up name. wes bos used 'sampleFishes'
 import Fish from './Fish';
+import OrderList from './OrderList';
 
 class App extends React.Component {
 
@@ -56,6 +57,11 @@ class App extends React.Component {
         </div>
 
         <Order />
+        <ul>
+            {Object.keys(this.state.orders).map(key => <OrderList
+              addToOrder={this.addToOrder}
+            />)}
+        </ul>
 
         <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
       </div>

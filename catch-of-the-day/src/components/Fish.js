@@ -5,7 +5,7 @@ class Fish extends React.Component {
   render() {
 
     const {image, name, price, desc, status} = this.props.details; 
-    const isAvailabe = status === 'available';
+    const isAvailable = status === 'available';
 
     return (
       <li className="menu-fish">
@@ -18,8 +18,8 @@ class Fish extends React.Component {
 
         <p>{desc}</p>
 
-        <button disabled={!isAvailabe} onClick={() => {this.props.addToOrder(this.props.index)}}>
-          {isAvailabe ? "Add to Order" : "Sold Out!"}
+        <button disabled={!isAvailable} onClick={() => {this.props.addToOrder(this.props.index)}}>
+          {isAvailable ? "Add to Order" : "Sold Out!"}
         </button>
       </li>
     );
