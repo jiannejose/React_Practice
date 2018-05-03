@@ -4,6 +4,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 import fishes from '../sample-fishes'; //fishes is a made up name. wes bos used 'sampleFishes'
 import Fish from './Fish';
+import base from '../base';
 
 class App extends React.Component {
 
@@ -11,6 +12,17 @@ class App extends React.Component {
     fishes: {},
     orders: {}
   };
+
+  componentDidMount() {
+    this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+      context: this,
+      state: 'fishes',
+    });
+  }
+
+  componentWillUnmount() {
+    base.remove(this.ref);
+  }
 
   addFish = (fish) => {
     const fishesList = {...this.state.fishes};
