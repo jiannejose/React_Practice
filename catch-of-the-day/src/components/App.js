@@ -81,12 +81,14 @@ class App extends React.Component {
     });
   }
 
-  // deleteOrder = (key) => {
-  //   //1. make a copy of the order state
-  //   const orders = { ...this.state.orders }
-  //   //2. deleting specific order
-    
-  // }
+  removeItemFromOrders = (key) => {
+    //1. make a copy of the order state
+    const orders = { ...this.state.orders };
+    //2. deleting specific order
+    delete orders[key]; // not setting to null because it is not linked in firebase
+    //3. update state
+    this.setState({ orders });
+  }
 
   render() {
     return (
@@ -107,6 +109,7 @@ class App extends React.Component {
         <Order
           fishes={this.state.fishes}
           orders={this.state.orders}
+          removeItemFromOrders={this.removeItemFromOrders}
         />
         
         <Inventory 
