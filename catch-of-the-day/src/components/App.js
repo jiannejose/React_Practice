@@ -55,6 +55,15 @@ class App extends React.Component {
     this.setState({ fishes:fishes });
   }
 
+  deleteFish = (key) => {
+    //1. make a copy of the state
+    const fishes = { ...this.state.fishes };
+    //2. deleting specific fish
+    fishes[key] = null;
+    //3. update the state
+    this.setState({ fishes });
+  }
+
   loadSampleFishes = () => {
     this.setState({
       fishes : fishes, // can just write 'fishes' since they're both 'fishes'.
@@ -71,6 +80,13 @@ class App extends React.Component {
       orders: orderList,
     });
   }
+
+  // deleteOrder = (key) => {
+  //   //1. make a copy of the order state
+  //   const orders = { ...this.state.orders }
+  //   //2. deleting specific order
+    
+  // }
 
   render() {
     return (
@@ -94,10 +110,11 @@ class App extends React.Component {
         />
         
         <Inventory 
-          addFish={this.addFish}
-          loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
+          loadSampleFishes={this.loadSampleFishes}
+          addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
         />
       </div>
     )
